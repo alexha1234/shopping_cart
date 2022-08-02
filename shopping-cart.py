@@ -55,7 +55,7 @@ while True:
         selected_products.append(matching_product)
         subtotal = subtotal + matching_product["price"]
         # continue the while loop
-
+tax_rate = input("PLEASE INPUT TAX RATE: ")
 print("---")
 print("THANK YOU FOR SHOPPING AT AL'S GROCERY!")
 print ("123 Main St")
@@ -71,7 +71,7 @@ for p in selected_products:
 print("---")
 print("   ")
 print("SUBTOTAL:", to_usd(subtotal))
-tax = subtotal * .0875
+tax = float(subtotal) * float(tax_rate)
 print("TAX:", to_usd(tax))
 total = tax + subtotal
 print("TOTAL:", to_usd(total))
