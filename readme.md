@@ -8,4 +8,4 @@ conda activate shopping-env
 pip install -r requirements.txt # (after specifying desired packages inside)
 
 # Call program with:
-python shopping_cart.py
+python shopping-cart.py
