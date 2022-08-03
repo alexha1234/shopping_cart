@@ -7,7 +7,7 @@ link = "https://raw.githubusercontent.com/prof-rossetti/intro-to-python/master/d
 csv=requests.get(link).content
 df=pd.read_csv(io.StringIO(csv.decode('utf-8')))
 products = df.to_dict(orient='records')
-
+# This code pulled from https://stackoverflow.com/questions/64187630/creating-a-list-of-dictionaries-from-a-url-that-points-to-a-csv
 #starter code provided
 def to_usd(my_price):
     """
