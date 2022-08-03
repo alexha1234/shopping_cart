@@ -1,5 +1,5 @@
 # shopping_cart.py
-pip install sendgrid
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -36,7 +36,8 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 # using datetime module
-import datetime;
+import datetime
+from gettext import install;
 ct = datetime.datetime.now()
 # ct stores current time
 
@@ -78,3 +79,4 @@ print("TOTAL:", to_usd(total))
 print("---")
 print("   ")
 print("THANK YOU, PLEASE COME AGAIN SOON")
+
