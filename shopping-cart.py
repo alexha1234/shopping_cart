@@ -32,7 +32,6 @@ subtotal = 0
 
 while True:
     selected_id = input("Please input a product id, or 'DONE': " )
-
     if selected_id.upper() == "DONE":
         break # break out of the while loop 
     else:
