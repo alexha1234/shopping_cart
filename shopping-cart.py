@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import requests
 
-link = "https://raw.githubusercontent.com/alexha1234/shopping_cart/main/products.csv"
+link = "https://raw.githubusercontent.com/alexha1234/shopping_cart/main/Data/products.csv"
 csv=requests.get(link).content
 df=pd.read_csv(io.StringIO(csv.decode('utf-8')))
 products = df.to_dict(orient='records')
