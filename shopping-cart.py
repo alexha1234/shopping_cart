@@ -51,7 +51,7 @@ print (ct)
 print("---")
 print("    ")
 
-
+'''
 for p in selected_products:
     print (p["name"], to_usd(p["price"]))
 print("---")
@@ -65,23 +65,39 @@ print("---")
 print("   ")
 print("THANK YOU, PLEASE COME AGAIN SOON")
 
-'''
-import sendgrid
 import os
-from sendgrid.helpers.mail import Mail, Email, To, Content
+from dotenv import load_dotenv
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
-sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-from_email = Email("alexander.n.hartley@gmail.com")  # Change to your verified sender
-to_email = (To("alexander.n.hartley@gmail.com")  # Change to your recipient
-subject = "Sending with SendGrid is Fun"
-content = Content("text/plain", "and easy to do anywhere, even with Python")
-mail = Mail(from_email, to_email, subject, content)
+load_dotenv()
 
-# Get a JSON-ready representation of the Mail object
-mail_json = mail.get()
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
 
-# Send an HTTP POST request to /mail/send
-response = sg.client.mail.send.post(request_body=mail_json)
-print(response.status_code)
-print(response.headers)
+client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+print("CLIENT:", type(client))
+
+subject = "Your Receipt from the Green Grocery Store"
+
+html_content = "You ordered: "
+for p in selected_products:
+    print (p["name"], to_usd(p["price"]))
+print("HTML:", html_content)
+
+# FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
+# ... but we can customize the `to_emails` param to send to other addresses
+message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html_content)
+
+try:
+    response = client.send(message)
+
+    print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+    print(response.status_code) #> 202 indicates SUCCESS
+    print(response.body)
+    print(response.headers)
+
+except Exception as err:
+    print(type(err))
+    print(err)
 '''
