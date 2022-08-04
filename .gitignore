@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 sendgrid.env
+
+data/products.csv
+!data/default_products.csv
