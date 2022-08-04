@@ -14,3 +14,5 @@ Make sure once you have the csv uploaded, you link to the raw data, by going int
 
 4. Call program with:
 python shopping-cart.py
+
+5. A note: this program allows you to input your own tax rate, in decimal form.
