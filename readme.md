@@ -2,7 +2,7 @@
 
 1. Clone the repository to your desktop
 
-2. Set working directory by cd Desktop/shopping-cart
+2. Set working directory by cd Desktop/shopping_cart
 
 3. IF USING THIRD-PARTY PACKAGES, USE A NEW ENV:
 conda create -n shopping-env python=3.8 
